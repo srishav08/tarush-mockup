@@ -1,0 +1,146 @@
+/* Reset general spacing */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1e293b;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 3rem;
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header nav a {
+  margin-left: 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+header nav a:hover {
+  color: #2563eb;
+}
+
+/* Section General */
+section {
+  padding: 1rem 3rem;
+}
+
+section h3 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+/* Hero Section */
+section:nth-of-type(1) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, #dbeafe, #f8fafc);
+}
+
+section:nth-of-type(1) h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+section:nth-of-type(1) p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+section:nth-of-type(1) img {
+  width: 90%;
+  max-width: 500px;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Button */
+button {
+  margin: 1rem 0rem;
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+}
+
+/* Designs Section */
+#designs .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+#designs .card {
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#designs .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+#designs img {
+  width: 100%;
+  border-radius: 0.75rem;
+}
+
+/* Gallery Section */
+#gallery {
+  background-color: #f1f5f9;
+}
+
+#gallery .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+#gallery img {
+  width: 100%;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  height: 20rem;
+}
+
+#gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Contact Section */
+#contact input, #contact textarea {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #cbd5e1;
+  padding: 1rem;
+  width: 100%;
+}
+
+#contact input:focus, #contact textarea:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+/* Footer */
+footer {
+  background: #e2e8f0;
+  color: #334155;
+  font-size: 1rem;
+  text-align: center;
+  padding: 2rem;
+}
