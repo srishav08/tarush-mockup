@@ -11,6 +11,8 @@ export default function KitchenColorSelectionPage() {
   const [cabinetColour, setCabinetColour] = useState("default");
   const [imageName, setImageName] = useState("kitchen-image.jpeg");
   const [showLoader, setShowLoader] = useState(false);
+  const [loaderMessage, setloaderMessage] = useState("");
+  
 
   const colorOptions = [
     "White", "Pink", "Gray", "Olive", "Blue"
@@ -43,11 +45,13 @@ export default function KitchenColorSelectionPage() {
         let imageNameString = wallColour+'-'+countertopColour+'-'+cabinetColour;
         setImageName(imageNameString+'.png');
         setShowLoader(false);
+        setloaderMessage("");
       },3000)
     }
   },[wallColour,countertopColour,cabinetColour])
 
   const handleChange = (e, dropdown) => {
+    setloaderMessage("Applyong changes");
     setSelections({ ...selections, [dropdown]: e.target.value });
     if(dropdown=="Wall Color") {
       e.target.value==""?setWallColour("default"): setWallColour(e.target.value.toLowerCase());
@@ -58,15 +62,23 @@ export default function KitchenColorSelectionPage() {
     else if(dropdown=="Countertop Color") {
       e.target.value==""?setCountertopColour("default"): setCountertopColour(e.target.value.toLowerCase());
     }
-
     setShowLoader(true);
     
-
   };
+
+  const handleConfirmDesign = (e) => {
+    setloaderMessage("Generating estimates");
+    setShowLoader(true);
+    setTimeout(()=> {
+      setloaderMessage("");
+      setShowLoader(false);
+      navigate('/estimate', { state: { image: `/src/assets/kitchen-mocks/${imageName}`, selections } })
+    },5000);
+  }
 
   return (
     <div className="full-page-wrapper">
-      {showLoader && <FullPageLoader message="Applying Changes" />}
+      {showLoader && <FullPageLoader message={loaderMessage} />}
       <header className="page-header">
         <h1 className="brand-logo" onClick={()=>{navigate('/')}}>Taarush</h1>
         <nav className="header-nav">
@@ -86,30 +98,35 @@ export default function KitchenColorSelectionPage() {
           />
         </div>
 
-        <div className="dropdown-grid">
-          {dropdowns.map((label) => (
-            <div key={label} className="dropdown-wrapper">
-              <label className="dropdown-label">{label}</label>
-              <select
-                className="dropdown-select"
-                value={selections[label] || ""}
-                onChange={(e) => handleChange(e, label)}
-              >
-                <option value="">Select a color</option>
-                {label==="Wall Color" && colorOptions.map((color) => (
-                  <option key={color} value={color}>{color}</option>
-                ))}
-                {label==="Cabinet Color" && cabinetColourOptions.map((color) => (
-                  <option key={color} value={color}>{color}</option>
-                ))}
-                {label==="Countertop Color" && counterTopColourOptions.map((color) => (
-                  <option key={color} value={color}>{color}</option>
-                ))}
-              </select>
-            </div>
-          ))}
-        </div>
+          <div className="dropdown-grid">
+            {dropdowns.map((label) => (
+              <div key={label} className="dropdown-wrapper">
+                <label className="dropdown-label">{label}</label>
+                <select
+                  className="dropdown-select"
+                  value={selections[label] || ""}
+                  onChange={(e) => handleChange(e, label)}
+                >
+                  <option value="">Select a color</option>
+                  {label==="Wall Color" && colorOptions.map((color) => (
+                    <option key={color} value={color}>{color}</option>
+                  ))}
+                  {label==="Cabinet Color" && cabinetColourOptions.map((color) => (
+                    <option key={color} value={color}>{color}</option>
+                  ))}
+                  {label==="Countertop Color" && counterTopColourOptions.map((color) => (
+                    <option key={color} value={color}>{color}</option>
+                  ))}
+                </select>
+              </div>
+            ))}
+          </div>
       </div>
+          <div className="confirm-cta-wrapper">
+              <button className="confirm-design-btn" onClick={handleConfirmDesign}>
+                Confirm Design for Estimate
+              </button>
+          </div>
     </div>
     </div>
   );
