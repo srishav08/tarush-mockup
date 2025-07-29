@@ -28,7 +28,7 @@ export default function EstimatePage() {
   return (
     <div className="full-page-wrapper">
       <header className="page-header">
-        <h1 className="brand-logo" onClick={()=>{navigate('/')}}>Taarush</h1>
+        <h1 className="cursor-pointer brand-logo" onClick={()=>{navigate('/')}}>Taarush</h1>
         <nav className="header-nav">
           <a href="/" className="header-link">Home</a>
           <a href="/my-design" className="header-link">My Design</a>

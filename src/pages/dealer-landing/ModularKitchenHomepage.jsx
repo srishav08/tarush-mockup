@@ -24,7 +24,7 @@ export default function ModularKitchenHomepage() {
     <div className="min-h-screen bg-white text-gray-800 font-sans">
       {showLoader && <FullPageLoader message="Generating Designs" />}
       <header className="py-4 px-6 flex justify-between items-center shadow-md">
-        <h1 className="text-3xl font-bold" onClick={()=>{navigate('/')}}>Taarush</h1>
+        <h1 className="cursor-pointer text-3xl font-bold" onClick={()=>{navigate('/')}}>Taarush</h1>
         <nav className="space-x-6 text-lg">
           <a href="#about" className="hover:text-blue-600">About</a>
           <a href="#designs" className="hover:text-blue-600">Designs</a>

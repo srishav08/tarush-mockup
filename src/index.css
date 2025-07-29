@@ -71,4 +71,7 @@ button:focus-visible {
   button {
     background-color: #edf0f3;
   }
+  .cursor-pointer {
+    cursor: pointer;
+  }
 }
