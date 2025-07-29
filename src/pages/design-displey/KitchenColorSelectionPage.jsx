@@ -51,7 +51,7 @@ export default function KitchenColorSelectionPage() {
   },[wallColour,countertopColour,cabinetColour])
 
   const handleChange = (e, dropdown) => {
-    setloaderMessage("Applyong changes");
+    setloaderMessage("Applying changes");
     setSelections({ ...selections, [dropdown]: e.target.value });
     if(dropdown=="Wall Color") {
       e.target.value==""?setWallColour("default"): setWallColour(e.target.value.toLowerCase());
