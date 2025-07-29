@@ -44,7 +44,7 @@ export default function ModularKitchenHomepage() {
           <Button className="text-lg px-8 py-4 mt-4" onClick={() => setShowModal(true)}>Get Designs</Button>
         </div>
         <img 
-          src="/assets/images/kitchen_1.jpg" 
+          src={`${import.meta.env.BASE_URL}assets/images/kitchen_1.jpg`} 
           alt="Modular Kitchen" 
           className="md:w-1/2 rounded-2xl shadow-xl mt-10 md:mt-0"
         />
@@ -57,7 +57,7 @@ export default function ModularKitchenHomepage() {
             <Card key={idx} className="hover:scale-105 transition-transform">
               <CardContent className="p-4">
                 <img 
-                  src={`/assets/images/kitchen_${idx + 2}.jpg`} 
+                  src={`${import.meta.env.BASE_URL}assets/images/kitchen_${idx + 2}.jpg`} 
                   alt={style} 
                   className="rounded-lg mb-4"
                 />
@@ -75,7 +75,7 @@ export default function ModularKitchenHomepage() {
           {Array.from({ length: 5 }).map((_, idx) => (
             <img 
               key={idx} 
-              src={`/assets/images/kitchen_${idx + 5}.jpg`} 
+              src={`${import.meta.env.BASE_URL}assets/images/kitchen_${idx + 5}.jpg`} 
               alt="Kitchen Inspiration" 
               className="rounded-lg hover:scale-105 transition-transform w-full h-64 object-cover"
             />          

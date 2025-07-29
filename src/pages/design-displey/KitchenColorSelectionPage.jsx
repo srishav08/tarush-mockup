@@ -72,7 +72,7 @@ export default function KitchenColorSelectionPage() {
     setTimeout(()=> {
       setloaderMessage("");
       setShowLoader(false);
-      navigate('/estimate', { state: { image: `/src/assets/kitchen-mocks/${imageName}`, selections } })
+      navigate('/estimate', { state: { image: `assets/kitchen-mocks/${imageName}`, selections } })
     },5000);
   }
 
@@ -92,7 +92,7 @@ export default function KitchenColorSelectionPage() {
       <div className="kitchen-main-content">
         <div className="kitchen-image-container">
           <img
-            src={`/src/assets/kitchen-mocks/${imageName}`}
+            src={`${import.meta.env.BASE_URL}assets/kitchen-mocks/${imageName}`}
             alt="Kitchen Preview"
             className="kitchen-preview-image"
           />

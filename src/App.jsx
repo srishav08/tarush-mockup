@@ -6,7 +6,7 @@ import EstimatePage from "./pages/show-estimate/EstimatePage";
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/tarush-mockup/">
       <Routes>
         <Route path="/" element={<ModularKitchenHomepage />} />
         <Route path="/my-design" element={<KitchenColorSelectionPage />} />

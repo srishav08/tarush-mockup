@@ -27,7 +27,7 @@ export default function EstimatePage() {
       <h1>Estimated Price for Your Design</h1>
 
       <div className="estimate-content">
-        <img src={image} alt="Selected Design" className="estimate-image" />
+        <img src={`${import.meta.env.BASE_URL}${image}`} alt="Selected Design" className="estimate-image" />
 
         <div className="estimate-details">
           <h3>Selected Colors:</h3>
