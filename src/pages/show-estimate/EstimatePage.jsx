@@ -1,12 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./EstimatePage.css";
+import FullPageLoader from "../../components/ui/loader/FullPageLoader";
 
 export default function EstimatePage() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
 
+  const [materialChoice, setMaterialChoice] = useState("BWR");
+  const [shutterFinish, setShutterFinish] = useState("0.8 HGL");
+  const [hardwareChoice, setHardwareChoice] = useState("Indian");
+
+  
+  const { image, selections } = state;
+  const basePrice = 90000;
+  const additionalCost = Object.keys(selections).length * 2500;
+  const totalEstimate = basePrice + additionalCost;
+
+  
+  const handlePlaceOrder = () => {
+    setShowModal(true);
+  };
+
+  const handleOrderConfirm = () => {
+    setShowModal(false);
+    setShowLoader(true);
+    setTimeout(()=>{
+      setShowLoader(false);
+      navigate('/')
+    },2000)
+
+  }
+  
   if (!state?.image || !state?.selections) {
     return (
       <div className="estimate-page">
@@ -15,26 +42,17 @@ export default function EstimatePage() {
       </div>
     );
   }
-
-  const { image, selections } = state;
-  const basePrice = 50000;
-  const additionalCost = Object.keys(selections).length * 2500;
-  const totalEstimate = basePrice + additionalCost;
-
-  const handlePlaceOrder = () => {
-    setShowModal(true);
-  };
-
   return (
     <div className="full-page-wrapper">
+      {showLoader && <FullPageLoader message="Placing Order" />}
       <header className="page-header">
-        <h1 className="cursor-pointer brand-logo" onClick={()=>{navigate('/')}}>Taarush</h1>
+        <h1 className="cursor-pointer brand-logo" onClick={()=>{navigate('/')}}>Tarush</h1>
         <nav className="header-nav">
           <a href="/" className="header-link">Home</a>
           <a href="/my-design" className="header-link">My Design</a>
         </nav>
       </header>
-    <div className="estimate-page full-width">
+      <div className="estimate-page full-width">
       <h1>Estimated Price for Your Design</h1>
 
       <div className="estimate-content">
@@ -50,10 +68,49 @@ export default function EstimatePage() {
             ))}
           </ul>
 
+          <h3>Choose Configuration:</h3>
+          <div className="dropdown-group">
+            <div className="dropdown-wrapper">
+              <label>Base Material</label>
+              <select
+                value={materialChoice}
+                onChange={(e) => setMaterialChoice(e.target.value)}
+              >
+                <option value="BWR">BWR</option>
+                <option value="BWP">BWP</option>
+                <option value="HDHDMR">HDHDMR</option>
+              </select>
+            </div>
+
+            <div className="dropdown-wrapper">
+              <label>Shutter Finish</label>
+              <select
+                value={shutterFinish}
+                onChange={(e) => setShutterFinish(e.target.value)}
+              >
+                <option value="0.8 HGL">0.8 HGL</option>
+                <option value="1mm HGL">1mm HGL</option>
+                <option value="Acrylic">Acrylic</option>
+              </select>
+            </div>
+
+            <div className="dropdown-wrapper">
+              <label>Hardware & Accessories</label>
+              <select
+                value={hardwareChoice}
+                onChange={(e) => setHardwareChoice(e.target.value)}
+              >
+                <option value="Indian">Indian</option>
+                <option value="Hettich">Hettich</option>
+                <option value="Hafele">Hafele</option>
+              </select>
+            </div>
+          </div>
+
           <div className="estimate-summary">
-            <p><strong>Base Price:</strong> ₹{basePrice.toLocaleString()}</p>
+            {/* <p><strong>Base Price:</strong> ₹{basePrice.toLocaleString()}</p>
             <p><strong>Customization Charges:</strong> ₹{additionalCost.toLocaleString()}</p>
-            <hr />
+            <hr /> */}
             <h2>Total Estimate: ₹{totalEstimate.toLocaleString()}</h2>
           </div>
 
@@ -66,7 +123,7 @@ export default function EstimatePage() {
       {showModal && (
         <div className="confirmation-modal">
           <div className="confirmation-content">
-            <span className="close-btn" onClick={() => navigate('/')}>
+            <span className="close-btn" onClick={handleOrderConfirm}>
               &times;
             </span>
             <h2>✅ Order Confirmed!</h2>

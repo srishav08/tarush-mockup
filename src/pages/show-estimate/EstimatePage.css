@@ -70,3 +70,37 @@
     cursor: pointer;
   }
   
+  .dropdown-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .dropdown-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropdown-wrapper label {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #334155;
+  }
+  
+  .dropdown-wrapper select {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    color: #1e293b;
+    transition: border 0.3s, box-shadow 0.3s;
+  }
+  
+  .dropdown-wrapper select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }

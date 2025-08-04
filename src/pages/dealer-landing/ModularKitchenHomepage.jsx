@@ -24,7 +24,7 @@ export default function ModularKitchenHomepage() {
     <div className="min-h-screen bg-white text-gray-800 font-sans">
       {showLoader && <FullPageLoader message="Generating Designs" />}
       <header className="py-4 px-6 flex justify-between items-center shadow-md">
-        <h1 className="cursor-pointer text-3xl font-bold" onClick={()=>{navigate('/')}}>Taarush</h1>
+        <h1 className="cursor-pointer text-3xl font-bold" onClick={()=>{navigate('/')}}>Tarush</h1>
         <nav className="space-x-6 text-lg">
           <a href="#about" className="hover:text-blue-600">About</a>
           <a href="#designs" className="hover:text-blue-600">Designs</a>
@@ -41,7 +41,7 @@ export default function ModularKitchenHomepage() {
           <p className="text-lg text-gray-600">
             Tailored modular kitchen designs crafted to match your lifestyle and home aesthetics.
           </p>
-          <Button className="text-lg px-8 py-4 mt-4" onClick={() => setShowModal(true)}>Get Designs</Button>
+          <Button className="cta-button" onClick={() => setShowModal(true)}>Design your kitchen</Button>
         </div>
         <img 
           src={`${import.meta.env.BASE_URL}assets/images/kitchen_1.jpg`} 
@@ -108,7 +108,7 @@ export default function ModularKitchenHomepage() {
       {showModal && <ImageUploadModal onClose={() => setShowModal(false)} onUpload={handleImageUpload} />}
 
       <footer className="text-center p-6 bg-gray-200 text-gray-700">
-        &copy; {new Date().getFullYear()} Taarush. All Rights Reserved.
+        &copy; {new Date().getFullYear()} Tarush. All Rights Reserved.
       </footer>
     </div>
   );
