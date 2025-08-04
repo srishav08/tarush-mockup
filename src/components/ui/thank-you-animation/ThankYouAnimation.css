@@ -1,0 +1,63 @@
+.thank-you-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .thank-you-content {
+    text-align: center;
+  }
+  
+  .checkmark-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #4ade80;
+    position: relative;
+    animation: popIn 0.5s ease;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 25%;
+    left: 28%;
+    width: 40%;
+    height: 20%;
+    border-left: 6px solid white;
+    border-bottom: 6px solid white;
+    transform: rotate(-45deg);
+    animation: draw 0.5s ease 0.2s forwards;
+    opacity: 0;
+  }
+  
+  .thank-you-label {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e293b;
+  }
+  
+  @keyframes popIn {
+    0% {
+      transform: scale(0.3);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes draw {
+    to {
+      opacity: 1;
+    }
+  }
+  

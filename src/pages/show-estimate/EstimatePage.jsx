@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./EstimatePage.css";
 import FullPageLoader from "../../components/ui/loader/FullPageLoader";
+import ThankYouAnimation from "../../components/ui/thank-you-animation/ThankYouAnimation";
 
 export default function EstimatePage() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
+  const [showThankYouAnimation, setShowThankYouAnimation] = useState(false);
 
   const [materialChoice, setMaterialChoice] = useState("BWR");
   const [shutterFinish, setShutterFinish] = useState("0.8 HGL");
@@ -21,16 +23,20 @@ export default function EstimatePage() {
 
   
   const handlePlaceOrder = () => {
-    setShowModal(true);
+    setShowLoader(true);
+    setTimeout(()=>{
+      setShowLoader(false);
+      setShowModal(true);
+    },1000)
   };
 
   const handleOrderConfirm = () => {
     setShowModal(false);
-    setShowLoader(true);
+    setShowThankYouAnimation(true);
     setTimeout(()=>{
-      setShowLoader(false);
+      setShowThankYouAnimation(false);
       navigate('/')
-    },2000)
+    },1500)
 
   }
   
@@ -45,6 +51,7 @@ export default function EstimatePage() {
   return (
     <div className="full-page-wrapper">
       {showLoader && <FullPageLoader message="Placing Order" />}
+      {showThankYouAnimation && <ThankYouAnimation/>}
       <header className="page-header">
         <h1 className="cursor-pointer brand-logo" onClick={()=>{navigate('/')}}>Tarush</h1>
         <nav className="header-nav">
