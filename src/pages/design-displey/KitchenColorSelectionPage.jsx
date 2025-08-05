@@ -80,7 +80,8 @@ export default function KitchenColorSelectionPage() {
     <div className="full-page-wrapper">
       {showLoader && <FullPageLoader message={loaderMessage} />}
       <header className="page-header">
-        <h1 className="cursor-pointer brand-logo" onClick={()=>{navigate('/')}}>Tarush</h1>
+        {/* <h1 className="cursor-pointer brand-logo" onClick={()=>{navigate('/')}}>Tarush</h1> */}
+        <img onClick={()=>navigate('/')} src={`${import.meta.env.BASE_URL}assets/TarushSVG.svg`} alt="logo" className="logo-img" />
         <nav className="header-nav">
           <a href="/" className="header-link">Home</a>
           <a href="/my-design" className="header-link">My Design</a>
