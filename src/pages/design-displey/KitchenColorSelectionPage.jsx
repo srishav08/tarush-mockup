@@ -15,7 +15,7 @@ export default function KitchenColorSelectionPage() {
   
 
   const colorOptions = [
-    "Pink", "Blue"
+    "Pink", "Blue", "olive"
   ];
 
   const counterTopColourOptions = [
